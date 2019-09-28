@@ -1,0 +1,15 @@
+session_name: XRDP info session
+windows: 
+  - window_name: configurations
+    layout: tiled
+    focus: true
+    panes:
+      - nano /etc/xrdp/startwm.sh       # Top-left
+      - nano /etc/xrdp/sesman.ini       # Top-right
+      - nano /etc/xrdp/xrdp.ini
+  - window_name: monitors
+    panes:
+	  - vncserver -list
+	  - ck-list-sessions
+	  - netstat -tulpn | grep vnc
+	  - lsof -b -w -n -c /^Xvnc$/b -a -iTCP:5900-5999 	# https://serverfault.com/q/845426/382644

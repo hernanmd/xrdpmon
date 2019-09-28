@@ -1,0 +1,7 @@
+#!/bin/bash
+
+function launch_install() {
+	tmuxp load .tmuxp.yaml
+}
+
+launch_install

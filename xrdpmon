@@ -1,0 +1,13 @@
+#!/bin/sh
+
+user="$1"
+vnclog=$(find "$user"/.vnc/ -name "*.log" -print)
+
+multitail \
+	-ci white "$user"/"$vnclog" \
+	-ci magenta -I "$user"/.xsession-errors \
+	-ci yellow /var/log/xrdp-sesman.log \
+	-ci cyan -I /var/log/secure \
+	-ci red /var/log/messages
+
+# ss -lp -t4 state connected
