@@ -1,10 +1,10 @@
 #!/bin/sh
 
-user="$1"
+user=/home/"$1"
 vnclog=$(find "$user"/.vnc/ -name "*.log" -print)
 
 multitail \
-	-ci white "$user"/"$vnclog" \
+	-ci white "$vnclog" \
 	-ci magenta -I "$user"/.xsession-errors \
 	-ci yellow /var/log/xrdp-sesman.log \
 	-ci cyan -I /var/log/secure \
